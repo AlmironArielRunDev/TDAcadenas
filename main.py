@@ -6,7 +6,7 @@ from funciones.buscar_palabra import buscar_palabra
 # from funciones.eliminar_palabra import eliminar_palabra
 # from funciones.eliminar_palabra import eliminar_palabra
 # from funciones.reemplazar_palabra import reemplazar_palabra
-# from funciones.contar_palabras import contar_palabras
+from funciones.contar_palabras import contar_palabras
 # from funciones.contar_oraciones import contar_oraciones
 # from funciones.contar_parrafos import contar_parrafos
 
@@ -21,7 +21,7 @@ def iniciar_programa():
 
         if opcion == 8:
             print("Saliendo del programa...")
-            time.sleep(2)
+            time.sleep(1)
             os.system('cls')
             break
 
@@ -39,7 +39,7 @@ def iniciar_programa():
             print("Función de reemplazar palabra todavía no está desarrollada.")
         elif opcion == 5:
             # Implementar contar palabras
-            print("Función de contar palabras todavía no está desarrollada.")
+            contar_palabras(pagina_libro)
         elif opcion == 6:
             # Implementar contar oraciones
             print("Función de contar oraciones todavía no está desarrollada.")
@@ -58,7 +58,7 @@ def iniciar_programa():
         else:
             continuar = False
             print("Saliendo del programa...")
-            time.sleep(2)  # Esperar 2 segundos antes de salir
+            time.sleep(1)  # Esperar 2 segundos antes de salir
             os.system('cls')
 
 
