@@ -8,13 +8,14 @@ from funciones.buscar_palabra import buscar_palabra
 # from funciones.reemplazar_palabra import reemplazar_palabra
 from funciones.contar_palabras import contar_palabras
 from funciones.contar_oraciones import contar_oraciones
-# from funciones.contar_parrafos import contar_parrafos
+from funciones.contar_parrafos import contar_parrafos
+
 
 
 # Función Interface Principal
 def iniciar_programa():
     pagina_libro = input('Por favor, ingrese el texto de la pagina del libro: ')
-
+    
     continuar = True
     while continuar:
         opcion = mostrar_menu()
@@ -45,7 +46,7 @@ def iniciar_programa():
             contar_oraciones(pagina_libro)
         elif opcion == 7:
             # Implementar contar párrafos
-            print("Función de contar párrafos todavía no está desarrollada.")
+            contar_parrafos(pagina_libro)
         else:
             print("Opción no válida. Por favor, seleccione una opción del 1 al 8.")
         
