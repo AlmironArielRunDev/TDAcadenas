@@ -2,9 +2,8 @@ import os
 import time
 from funciones.mostrar_menu import mostrar_menu
 from funciones.buscar_palabra import buscar_palabra
-# from funciones.agregar_palabra import agregar_palabra
-# from funciones.eliminar_palabra import eliminar_palabra
-# from funciones.eliminar_palabra import eliminar_palabra
+from funciones.agregar_palabra import agregar_palabra
+from funciones.eliminar_palabra import eliminar_palabra
 # from funciones.reemplazar_palabra import reemplazar_palabra
 from funciones.contar_palabras import contar_palabras
 from funciones.contar_oraciones import contar_oraciones
@@ -31,10 +30,10 @@ def iniciar_programa():
             buscar_palabra(pagina_libro)
         elif opcion == 2:
             # Implementar agregar palabra
-            print("Función de agregar palabra todavía no está desarrollada.")
+           agregar_palabra(pagina_libro)
         elif opcion == 3:
             # Implementar eliminar palabra
-            print("Función de eliminar palabra todavía no está desarrollada.")
+            eliminar_palabra(pagina_libro)
         elif opcion == 4:
             # Implementar reemplazar palabra
             print("Función de reemplazar palabra todavía no está desarrollada.")
