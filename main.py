@@ -3,7 +3,6 @@ import time
 from funciones.mostrar_menu import mostrar_menu
 from tda.tda_cadenas import buscar_palabra, agregar_palabra, eliminar_palabra, reemplazar_palabra, contar_palabras, contar_oraciones, contar_parrafos
 
-# agregar palabra
 
 # Función Interface Principal
 def iniciar_programa():
