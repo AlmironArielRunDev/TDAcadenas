@@ -60,29 +60,32 @@ def eliminar_palabra(texto):
 # ------------------------------------------------------------------------------
 def reemplazar_palabra(texto):
     palabra_a_reemplazar = input("Ingrese la palabra que desea reemplazar: ")
-    posicion_inicial = int(input("Indique la posición a partir de la cual quiere comenzar a buscar la palabra (1 para el inicio): ")) - 1
+    posicion_inicial = int(input("Indique la posición del carácter a partir del cual quiere comenzar a buscar la palabra: "))
     nueva_palabra = input("Ingrese la nueva palabra: ")
-    
-    palabras = texto.split()
-    
-    if posicion_inicial < 0 or posicion_inicial >= len(palabras):
+
+    # Validar posición inicial
+    if posicion_inicial < 0 or posicion_inicial >= len(texto):
         raise ValueError("La posición especificada está fuera de los límites del texto.")
-    
+
+    longitud_palabra = len(palabra_a_reemplazar)
+    texto_modificado = ""
     palabra_reemplazada = False
-    for i in range(posicion_inicial, len(palabras)):
-        if palabras[i] == palabra_a_reemplazar:
-            palabras[i] = nueva_palabra
+
+    i = posicion_inicial
+    while i < len(texto):
+        if texto[i:i+longitud_palabra] == palabra_a_reemplazar and (i == 0 or texto[i-1] == ' ') and (i + longitud_palabra == len(texto) or texto[i + longitud_palabra] == ' '):
+            texto_modificado = texto[:i] + nueva_palabra + texto[i+longitud_palabra:]
             palabra_reemplazada = True
             break
-    
+        i += 1
+
     if not palabra_reemplazada:
         print("No se encontró la palabra a reemplazar a partir de la posición especificada.")
         return
-    
-    texto_modificado = ' '.join(palabras)
-    
+
     print('')
     print("Texto modificado: ", texto_modificado)
+
 
 
 
