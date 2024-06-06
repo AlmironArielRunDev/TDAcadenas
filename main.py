@@ -1,13 +1,7 @@
 import os
 import time
 from funciones.mostrar_menu import mostrar_menu
-from funciones.buscar_palabra import buscar_palabra
-from funciones.agregar_palabra import agregar_palabra
-from funciones.eliminar_palabra import eliminar_palabra
-# from funciones.reemplazar_palabra import reemplazar_palabra
-from funciones.contar_palabras import contar_palabras
-from funciones.contar_oraciones import contar_oraciones
-from funciones.contar_parrafos import contar_parrafos
+from tda.tda_cadenas import buscar_palabra, agregar_palabra, eliminar_palabra, reemplazar_palabra, contar_palabras, contar_oraciones, contar_parrafos
 
 
 
@@ -36,7 +30,7 @@ def iniciar_programa():
             eliminar_palabra(pagina_libro)
         elif opcion == 4:
             # Implementar reemplazar palabra
-            print("Función de reemplazar palabra todavía no está desarrollada.")
+            reemplazar_palabra(pagina_libro)
         elif opcion == 5:
             # Implementar contar palabras
             contar_palabras(pagina_libro)
