@@ -19,19 +19,11 @@ def buscar_palabra(texto):
 def agregar_palabra(texto):
 
     palabra = input("Ingrese la palabra que desea agregar: ")
-    posicion = int(input("Indique la posicion en la que quiere agregar la palabra: ")) - 1
-    
-    palabras = texto.split()
-    
-    while posicion < 0 or posicion > len(palabras):
-        raise ValueError("La posición especificada está fuera de los límites del texto.")
-        posicion = int(input("Indique la posicion en la que quiere agregar la palabra: ")) - 1
-   
-
-    palabras.insert(posicion, palabra)
-    texto_modificado = ' '.join(palabras)
-    
-    print('')
+    posicion = int(input("Indique la posicion en la que quiere agregar la palabra: "))
+    while posicion < 0 or posicion > len(texto):
+        print("Valor fuera de rango, ingrese un numero valido. (entre 0 y " , len(texto) , ")")
+        posicion = int(input("Indique la posicion en la que quiere agregar la palabra: "))
+    texto_modificado = texto[:posicion] + palabra + texto[posicion:]
     print("Texto modificado: " , texto_modificado)
 
 
