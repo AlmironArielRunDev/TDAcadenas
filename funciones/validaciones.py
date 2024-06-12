@@ -26,3 +26,4 @@ def validar_reingreso(opcion):
     while opcion not in opciones:
         print("\nERROR. Debe ingresar una opcion valida (s / n)")
         opcion = input("¿Desea realizar otra operación? (s/n): ").lower()
+    return opcion

@@ -23,14 +23,13 @@ def agregar_palabra(texto):
     palabra = input("Ingrese la palabra que desea agregar: ")
     posicion = input("Indique la posicion en la que quiere agregar la palabra: ")
     posicion = validar_int(posicion)
-    while posicion < 0 or posicion > len(texto):
-        print("Valor fuera de rango, ingrese un numero valido. (entre 0 y " , len(texto) , ")")
+    palabras = texto.split()
+    while posicion < 0 or posicion > len(palabras):
+        print("Valor fuera de rango, ingrese un numero valido. (entre 0 y " , len(palabras) , ")")
         posicion = int(input("Indique la posicion en la que quiere agregar la palabra: "))
-    texto_modificado = texto[:posicion] + palabra + texto[posicion:]
+    palabras.insert(posicion, palabra)  
+    texto_modificado = " ".join(palabras)
     print("Texto modificado: " , texto_modificado)
-
-
-
 # Eliminar palabra
 # ------------------------------------------------------------------------------
 def eliminar_palabra(texto):
