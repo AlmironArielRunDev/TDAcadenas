@@ -12,40 +12,34 @@ def iniciar_programa():
     
     continuar = True
     while continuar:
-        opcion = mostrar_menu()
+        opcion = mostrar_menu(pagina_libro)
 
-        if opcion == 8:
-            print("Saliendo del programa...")
-            time.sleep(1)
-            os.system('cls')
-            break
+        match opcion:
+            case 8:
+                print("Saliendo del programa...")
+                time.sleep(1)
+                os.system('cls')
+                break
 
-        if opcion == 1:
-            # Implementar búsqueda de palabra
-            buscar_palabra(pagina_libro)
-        elif opcion == 2:
-            # Implementar agregar palabra
-           agregar_palabra(pagina_libro)
-        elif opcion == 3:
-            # Implementar eliminar palabra
-            eliminar_palabra(pagina_libro)
-        elif opcion == 4:
-            # Implementar reemplazar palabra
-            reemplazar_palabra(pagina_libro)
-        elif opcion == 5:
-            # Implementar contar palabras
-            contar_palabras(pagina_libro)
-        elif opcion == 6:
-            # Implementar contar oraciones
-            contar_oraciones(pagina_libro)
-        elif opcion == 7:
-            # Implementar contar párrafos
-            contar_parrafos(pagina_libro)
-        else:
-            print("Opción no válida. Por favor, seleccione una opción del 1 al 8.")
+            case 1:
+                buscar_palabra(pagina_libro)
+            case 2:
+                agregar_palabra(pagina_libro)
+            case 3:
+                eliminar_palabra(pagina_libro)
+            case 4:
+                reemplazar_palabra(pagina_libro)
+            case 5:
+                contar_palabras(pagina_libro)
+            case 6:
+                contar_oraciones(pagina_libro)
+            case 7:
+                contar_parrafos(pagina_libro)
+            case _:
+                print("Opción no válida. Por favor, seleccione una opción del 1 al 8.")
         
 
-        # Preguntar al usuario si quiere continuar
+        # Preguntar al usuario si quiere continuar realizando operaciones
         print('')
         respuesta = input("¿Desea realizar otra operación? (s/n): ").lower()
         respuesta = validar_reingreso(respuesta)
@@ -58,5 +52,4 @@ def iniciar_programa():
             os.system('cls')
 
 
-# Iniciar el programa
 iniciar_programa()

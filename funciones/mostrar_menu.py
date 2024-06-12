@@ -1,8 +1,10 @@
 from funciones.validaciones import validar_int, validar_rango
 # Función para mostrar el menú de opciones
-def mostrar_menu():
-    print("\nMenú de opciones:")
-    print("1. Buscar palabra (buscar la primera ocurrencia y posición a partir de la palabra y posición dada.)")
+def mostrar_menu(texto):
+    print(texto)
+    print('')
+    print("Menú de opciones:")
+    print("1. Buscar palabra (buscar la primera ocurrencia y posición de la palabra y posición dada.)")
     print("2. Agregar palabra (a partir de una posición dada)")
     print("3. Eliminar palabra (a partir de una posición dada)")
     print("4. Reemplazar palabra (a partir de la posición dada)")
