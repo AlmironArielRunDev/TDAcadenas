@@ -1,3 +1,4 @@
+from funciones.validaciones import validar_int, validar_rango
 # Función para mostrar el menú de opciones
 def mostrar_menu():
     print("\nMenú de opciones:")
@@ -9,4 +10,7 @@ def mostrar_menu():
     print("6. Contar oraciones (cantidad de oraciones encontradas en un texto)")
     print("7. Contar párrafos (cantidad de párrafos encontrados en el texto)")
     print("8. Salir")
-    return int(input("Ingrese una opcion: "))
+    opcion = input("Ingrese una opcion: ")
+    opcion = validar_int(opcion)
+    opcion = validar_rango(opcion,1,8)
+    return opcion

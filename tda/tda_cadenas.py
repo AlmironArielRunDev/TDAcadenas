@@ -1,8 +1,10 @@
+from funciones.validaciones import validar_int, validar_rango
 # Función encontrar palabra
 # ------------------------------------------------------------------------------
 def buscar_palabra(texto):
     palabra = input("Ingrese la palabra que desea buscar: ")
-    posicion_inicial = int(input("Indique la posicion a partir de la cual buscar: "))
+    posicion_inicial = input("Indique la posicion a partir de la cual buscar: ")
+    posicion_inicial = validar_int(posicion_inicial)
     index = texto.find(palabra, posicion_inicial)
 
     if index != -1:
@@ -19,7 +21,8 @@ def buscar_palabra(texto):
 def agregar_palabra(texto):
 
     palabra = input("Ingrese la palabra que desea agregar: ")
-    posicion = int(input("Indique la posicion en la que quiere agregar la palabra: "))
+    posicion = input("Indique la posicion en la que quiere agregar la palabra: ")
+    posicion = validar_int(posicion)
     while posicion < 0 or posicion > len(texto):
         print("Valor fuera de rango, ingrese un numero valido. (entre 0 y " , len(texto) , ")")
         posicion = int(input("Indique la posicion en la que quiere agregar la palabra: "))
@@ -33,7 +36,8 @@ def agregar_palabra(texto):
 def eliminar_palabra(texto):
 
     palabra = input("Ingrese la palabra que desea eliminar: ")
-    posicion_inicial = int(input("Indique la posicion a partir de la cual buscar: "))
+    posicion_inicial = input("Indique la posicion a partir de la cual buscar: ")
+    posicion_inicial = validar_int(posicion_inicial)
     index = texto.find(palabra, posicion_inicial)
 
         # Si la palabra se encuentra, eliminarla
@@ -52,7 +56,8 @@ def eliminar_palabra(texto):
 # ------------------------------------------------------------------------------
 def reemplazar_palabra(texto):
     palabra_a_reemplazar = input("Ingrese la palabra que desea reemplazar: ")
-    posicion_inicial = int(input("Indique la posición del carácter a partir del cual quiere comenzar a buscar la palabra: "))
+    posicion_inicial = input("Indique la posición del carácter a partir del cual quiere comenzar a buscar la palabra: ")
+    posicion_inicial = validar_int(posicion_inicial)
     nueva_palabra = input("Ingrese la nueva palabra: ")
 
     # Validar posición inicial

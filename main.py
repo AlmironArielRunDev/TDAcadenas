@@ -1,7 +1,9 @@
 import os
 import time
 from funciones.mostrar_menu import mostrar_menu
+from funciones.validaciones import validar_reingreso
 from tda.tda_cadenas import buscar_palabra, agregar_palabra, eliminar_palabra, reemplazar_palabra, contar_palabras, contar_oraciones, contar_parrafos
+
 
 
 # Función Interface Principal
@@ -46,6 +48,7 @@ def iniciar_programa():
         # Preguntar al usuario si quiere continuar
         print('')
         respuesta = input("¿Desea realizar otra operación? (s/n): ").lower()
+        respuesta = validar_reingreso(respuesta)
         if respuesta == 's':
             os.system('cls')
         else:
