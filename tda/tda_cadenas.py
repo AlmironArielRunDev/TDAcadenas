@@ -41,10 +41,13 @@ def agregar_palabra(texto):
     palabra = input("Ingrese la palabra que desea agregar: ")
     posicion = input("Indique la posicion en la que quiere agregar la palabra: ")
     posicion = validar_int(posicion)
+    
     palabras = texto.split()
+    
     while posicion < 0 or posicion > len(palabras):
-        print("Valor fuera de rango, ingrese un numero valido. (entre 0 y " , len(palabras) , ")")
+        print(f"Valor fuera de rango, ingrese un numero valido. (entre 0 y {len(palabras)})")
         posicion = int(input("Indique la posicion en la que quiere agregar la palabra: "))
+        
     palabras.insert(posicion, palabra)  
     texto_modificado = " ".join(palabras)
     print("Texto modificado: " , texto_modificado)
@@ -84,33 +87,29 @@ def eliminar_palabra(texto):
 # ------------------------------------------------------------------------------
 def reemplazar_palabra(texto):
     palabra_a_reemplazar = input("Ingrese la palabra que desea reemplazar: ")
-    posicion_inicial = input("Indique la posición del carácter a partir del cual quiere comenzar a buscar la palabra: ")
-    posicion_inicial = validar_int(posicion_inicial)
     nueva_palabra = input("Ingrese la nueva palabra: ")
+    posicion_inicial = int(input("Indique la posición a partir de la cual buscar: "))
+    
+    # Dividir el texto en palabras
+    palabras = texto.split()
 
-    # Validar posición inicial
-    if posicion_inicial < 0 or posicion_inicial >= len(texto):
-        raise ValueError("La posición especificada está fuera de los límites del texto.")
-
-    longitud_palabra = len(palabra_a_reemplazar)
-    texto_modificado = ""
-    palabra_reemplazada = False
-
-    i = posicion_inicial
-    while i < len(texto):
-        if texto[i:i+longitud_palabra] == palabra_a_reemplazar and (i == 0 or texto[i-1] == ' ') and (i + longitud_palabra == len(texto) or texto[i + longitud_palabra] == ' '):
-            texto_modificado = texto[:i] + nueva_palabra + texto[i+longitud_palabra:]
-            palabra_reemplazada = True
-            break
-        i += 1
-
-    if not palabra_reemplazada:
-        print("No se encontró la palabra a reemplazar a partir de la posición especificada.")
+    # Validar que la posición inicial esté dentro del rango del texto
+    if not (1 <= posicion_inicial <= len(palabras)):
+        print("La posición inicial especificada está fuera de los límites del texto.")
         return
 
-    print('')
-    print("Texto modificado: ", texto_modificado)
+    # Ajustar la posición inicial para que coincida con el índice de lista (restar 1)
+    posicion_inicial -= 1
 
+    # Recorrer las palabras y encontrar la primera aparición de la palabra a reemplazar
+    for i in range(len(palabras)):
+        if i >= posicion_inicial and palabras[i] == palabra_a_reemplazar:
+            palabras[i] = nueva_palabra
+            break
+
+    # Unir las palabras nuevamente en un texto actualizado
+    texto_actualizado = ' '.join(palabras)
+    print(texto_actualizado)
 
 
 
