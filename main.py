@@ -38,11 +38,14 @@ def iniciar_programa():
             case 1:
                 buscar_palabra(pagina_libro)
             case 2:
-                agregar_palabra(pagina_libro)
+                nueva_pagina = agregar_palabra(pagina_libro)
+                pagina_libro = nueva_pagina
             case 3:
-                eliminar_palabra(pagina_libro)
+                nueva_pagina = eliminar_palabra(pagina_libro)
+                pagina_libro = nueva_pagina
             case 4:
-                reemplazar_palabra(pagina_libro)
+                nueva_pagina = reemplazar_palabra(pagina_libro)
+                pagina_libro = nueva_pagina
             case 5:
                 contar_palabras(pagina_libro)
             case 6:

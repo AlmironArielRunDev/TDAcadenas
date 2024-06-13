@@ -52,6 +52,7 @@ def agregar_palabra(texto):
     palabras.insert(posicion, palabra)  
     texto_modificado = " ".join(palabras)
     print("Texto modificado:\n" , texto_modificado)
+    return texto_modificado
     
     
 # Eliminar palabra
@@ -81,6 +82,7 @@ def eliminar_palabra(texto):
     # Unir las palabras nuevamente en un texto actualizado
     texto_actualizado = ' '.join(palabras)
     print(texto_actualizado)
+    return texto_actualizado
 
 
 
@@ -111,7 +113,7 @@ def reemplazar_palabra(texto):
     # Unir las palabras nuevamente en un texto actualizado
     texto_actualizado = ' '.join(palabras)
     print(texto_actualizado)
-
+    return texto_actualizado
 
 
 
