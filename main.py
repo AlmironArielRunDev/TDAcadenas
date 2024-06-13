@@ -11,7 +11,6 @@ from funciones.contar_oraciones import contar_oraciones
 from funciones.contar_parrafos import contar_parrafos
 
 
-
 # Función Interface Principal
 def iniciar_programa():
     pagina_libro = input('Por favor, ingrese el texto de la pagina del libro: ')
