@@ -11,7 +11,7 @@ def buscar_palabra(texto):
     
     # Convertir la posición de palabra a posición de lista restandole 1
     # para que el usuario se guie por numero posicion de palabra 
-    posicion_inicial -= 1
+    # posicion_inicial -= 1
 
     # Verificar si la posición inicial es válida
     if posicion_inicial < 0 or posicion_inicial >= len(palabras):
@@ -27,10 +27,10 @@ def buscar_palabra(texto):
 
     if index != -1:
         print('')
-        print(f"La palabra '{palabra}' comienza en la posición: {index + 1}")  # Sumamos 1 para contar desde 1
+        print(f"La palabra '{palabra}' comienza en la posición: {index + 1}") 
     else:
         print('')
-        print(f"La palabra '{palabra}' no fue encontrada después de la posición {posicion_inicial + 1}.")  # Sumamos 1 para contar desde 1
+        print(f"La palabra '{palabra}' no fue encontrada después de la posición {posicion_inicial + 1}.")
 
 
 
@@ -130,7 +130,7 @@ def contar_palabras(texto):
 # ------------------------------------------------------------------------------
 def contar_oraciones(texto):
     # Lista de los signos que indican cuando termina una frase u oración
-    signos = ['.', '?', '!']
+    signos = ['.']
     
     contar_oraciones = 0
     
