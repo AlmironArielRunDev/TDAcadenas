@@ -13,7 +13,7 @@ def iniciar_programa():
         pagina_libro = input('Por favor, ingrese el texto de la pagina del libro: ')
     else:
         pagina_libro = """        Tres anillos para los Reyes Elfos bajo el cielo.
-        Siete para los Señores Enenos en casas de piedra.
+        Siete para los Señores Enanos en casas de piedra.
         Nueve para los Hombres Mortales condenados a morir.
         Uno para el Señor Oscuro, sobre el trono oscuro
         en las Tierras de Mordor, donde se extienden las Sombras.

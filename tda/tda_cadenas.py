@@ -11,7 +11,7 @@ def buscar_palabra(texto):
     
     # Convertir la posición de palabra a posición de lista restandole 1
     # para que el usuario se guie por numero posicion de palabra 
-    # posicion_inicial -= 1
+    posicion_inicial -= 1
 
     # Verificar si la posición inicial es válida
     if posicion_inicial < 0 or posicion_inicial >= len(palabras):
@@ -51,7 +51,7 @@ def agregar_palabra(texto):
         
     palabras.insert(posicion, palabra)  
     texto_modificado = " ".join(palabras)
-    print("Texto modificado: " , texto_modificado)
+    print("Texto modificado:\n" , texto_modificado)
     
     
 # Eliminar palabra
