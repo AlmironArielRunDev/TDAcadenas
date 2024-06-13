@@ -1,39 +1,25 @@
 import os
 import time
 from funciones.mostrar_menu import mostrar_menu
+from funciones.pedir_texto import pedir_texto
 from funciones.validaciones import validar_reingreso
-from tda.tda_cadenas import buscar_palabra, agregar_palabra, eliminar_palabra, reemplazar_palabra ,contar_palabras, contar_oraciones, contar_parrafos
+from tda.tda_cadenas import (
+    buscar_palabra, agregar_palabra, eliminar_palabra,
+    reemplazar_palabra, contar_palabras, contar_oraciones, contar_parrafos
+)
 
 
 # Función Interface Principal
 def iniciar_programa():
-    ingreser_texto = input('Ingrese 1 si desea ingresar un texto, ENTER para texto default: ')
-    if ingreser_texto == '1':
-        pagina_libro = input('Por favor, ingrese el texto de la pagina del libro: ')
-    else:
-        pagina_libro = """        Tres anillos para los Reyes Elfos bajo el cielo.
-        Siete para los Señores Enanos en casas de piedra.
-        Nueve para los Hombres Mortales condenados a morir.
-        Uno para el Señor Oscuro, sobre el trono oscuro
-        en las Tierras de Mordor, donde se extienden las Sombras.
-        Un Anillo para gobernarlos a todos. Un Anillo para encontrarlos,
-        Un Anillo para atraerlos a todos y atarlos en las tinieblas
-        en la Tierra de Mordor, donde se extienden las Sombras."""
-            
-            
+    pagina_libro = pedir_texto()
+
     os.system('cls')
-    
-    continuar = True
-    while continuar:
+
+    ejecutar = True
+    while ejecutar:
         opcion = mostrar_menu(pagina_libro)
 
         match opcion:
-            case 8:
-                print("Saliendo del programa...")
-                time.sleep(1)
-                os.system('cls')
-                break
-
             case 1:
                 buscar_palabra(pagina_libro)
             case 2:
@@ -51,9 +37,12 @@ def iniciar_programa():
                 contar_oraciones(pagina_libro)
             case 7:
                 contar_parrafos(pagina_libro)
+            case 8:
+                pagina_libro = pedir_texto()
+                os.system('cls')
+                continue  # Volver al inicio del ciclo sin preguntar por continuar
             case _:
                 print("Opción no válida. Por favor, seleccione una opción del 1 al 8.")
-        
 
         # Preguntar al usuario si quiere continuar realizando operaciones
         print('')
@@ -62,9 +51,9 @@ def iniciar_programa():
         if respuesta == 's':
             os.system('cls')
         else:
-            continuar = False
+            ejecutar = False
             print("Saliendo del programa...")
-            time.sleep(1)  # Esperar 2 segundos antes de salir
+            time.sleep(1)  # Esperar 1 segundo antes de salir
             os.system('cls')
 
 
