@@ -2,7 +2,7 @@ import os
 import time
 from funciones.mostrar_menu import mostrar_menu
 from funciones.validaciones import validar_reingreso
-from tda.tda_cadenas import buscar_palabra, agregar_palabra, eliminar_palabra, reemplazar_palabra, contar_palabras, contar_oraciones, contar_parrafos
+from tda.tda_cadenas import buscar_palabra, agregar_palabra, eliminar_palabra, reemplazar_palabra ,contar_palabras, contar_oraciones, contar_parrafos
 
 
 

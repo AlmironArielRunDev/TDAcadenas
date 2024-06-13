@@ -1,9 +1,10 @@
 from funciones.validaciones import validar_int, validar_rango
+from funciones.split_casero import split_casero
 
 # Función buscar palabra
 # ------------------------------------------------------------------------------
 def buscar_palabra(texto):
-    palabras = texto.split()
+    palabras = split_casero(texto)
     palabra = input("Ingrese la palabra que desea buscar: ")
     posicion_inicial = input("Indique la posición a partir de la cual buscar: ")
     posicion_inicial = validar_int(posicion_inicial)
@@ -42,7 +43,7 @@ def agregar_palabra(texto):
     posicion = input("Indique la posicion en la que quiere agregar la palabra: ")
     posicion = validar_int(posicion)
     
-    palabras = texto.split()
+    palabras = split_casero(texto)
     
     while posicion < 0 or posicion > len(palabras):
         print(f"Valor fuera de rango, ingrese un numero valido. (entre 0 y {len(palabras)})")
@@ -61,7 +62,7 @@ def eliminar_palabra(texto):
     posicion_inicial = validar_int(posicion_inicial)
     
     # Dividir el texto en palabras
-    palabras = texto.split()
+    palabras = split_casero(texto)
 
     # Validar que la posición inicial esté dentro del rango del texto
     if not (1 <= posicion_inicial <= len(palabras)):
@@ -91,7 +92,7 @@ def reemplazar_palabra(texto):
     posicion_inicial = int(input("Indique la posición a partir de la cual buscar: "))
     
     # Dividir el texto en palabras
-    palabras = texto.split()
+    palabras = split_casero(texto)
 
     # Validar que la posición inicial esté dentro del rango del texto
     if not (1 <= posicion_inicial <= len(palabras)):
@@ -117,7 +118,7 @@ def reemplazar_palabra(texto):
 # Contar Palabras
 # ------------------------------------------------------------------------------
 def contar_palabras(texto):
-    palabras = texto.split()
+    palabras = split_casero(texto)
     
     cantidad_palabras = len(palabras)
     
@@ -148,23 +149,20 @@ def contar_oraciones(texto):
 # Contar Parrafos
 # ------------------------------------------------------------------------------
 def contar_parrafos(texto):
-    contador_parrafos = 0
-    dentro_de_parrafo = False
+    # Dividir el texto en líneas
+    lineas = texto.split('\n')
 
-    for i in range(len(texto)):
-        if texto[i] != '\n':
-            dentro_de_parrafo = True
-        elif texto[i] == '\n' and (i + 1 < len(texto) and texto[i + 1] == '\n'):
-            if dentro_de_parrafo:
-                contador_parrafos += 1
-                dentro_de_parrafo = False
-            i += 1  # Saltar el siguiente \n
-        elif texto[i] == '\n' and (i + 1 >= len(texto) or texto[i + 1] != '\n'):
-            if dentro_de_parrafo and i + 1 >= len(texto):
-                contador_parrafos += 1
-                dentro_de_parrafo = False
+    # Contar los párrafos
+    parrafos = 0
+    en_parrafo = False
 
-    if dentro_de_parrafo:
-        contador_parrafos += 1
+    for linea in lineas:
+        if linea.strip():  # Si la línea no está vacía
+            if not en_parrafo:
+                parrafos += 1
+                en_parrafo = True
+        else:
+            en_parrafo = False
 
-    return print(f"El texto proporcionado contiene {contador_parrafos} párrafos")
+    return print(f"Número de párrafos: {parrafos}")
+
