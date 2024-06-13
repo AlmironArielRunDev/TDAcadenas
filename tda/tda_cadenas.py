@@ -1,4 +1,5 @@
 from funciones.validaciones import validar_int, validar_rango
+
 # Función buscar palabra
 # ------------------------------------------------------------------------------
 def buscar_palabra(texto):
@@ -47,25 +48,36 @@ def agregar_palabra(texto):
     palabras.insert(posicion, palabra)  
     texto_modificado = " ".join(palabras)
     print("Texto modificado: " , texto_modificado)
+    
+    
 # Eliminar palabra
 # ------------------------------------------------------------------------------
 def eliminar_palabra(texto):
-
     palabra = input("Ingrese la palabra que desea eliminar: ")
-    posicion_inicial = input("Indique la posicion a partir de la cual buscar: ")
+    posicion_inicial = input("Indique la posición a partir de la cual buscar: ")
     posicion_inicial = validar_int(posicion_inicial)
-    index = texto.find(palabra, posicion_inicial)
+    
+    # Dividir el texto en palabras
+    palabras = texto.split()
 
-        # Si la palabra se encuentra, eliminarla
-    if index != -1:
-        # Calcular la longitud de la palabra
-        longitud_palabra = len(palabra)
-        # Eliminar la palabra del texto
-        texto_actualizado = texto[:index] + texto[index + longitud_palabra:]
-        print(texto_actualizado)
-    else:
-        print("La palabra especificada no se encontró en el texto.")
-        
+    # Validar que la posición inicial esté dentro del rango del texto
+    if not (1 <= posicion_inicial <= len(palabras)):
+        print("La posición inicial especificada está fuera de los límites del texto.")
+        return
+
+    # Ajustar la posición inicial para que coincida con el índice de lista (restar 1)
+    posicion_inicial -= 1
+
+    # Recorrer las palabras y eliminar la primera aparición de la palabra especificada
+    for i in range(len(palabras)):
+        if i >= posicion_inicial and palabras[i] == palabra:
+            del palabras[i]
+            break
+
+    # Unir las palabras nuevamente en un texto actualizado
+    texto_actualizado = ' '.join(palabras)
+    print(texto_actualizado)
+
 
 
 # Reemplazar palabra
