@@ -9,6 +9,7 @@ from tda.tda_cadenas import buscar_palabra, agregar_palabra, eliminar_palabra, r
 # Función Interface Principal
 def iniciar_programa():
     pagina_libro = input('Por favor, ingrese el texto de la pagina del libro: ')
+    os.system('cls')
     
     continuar = True
     while continuar:

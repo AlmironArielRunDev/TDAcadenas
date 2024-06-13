@@ -1,18 +1,35 @@
 from funciones.validaciones import validar_int, validar_rango
-# Función encontrar palabra
+# Función buscar palabra
 # ------------------------------------------------------------------------------
 def buscar_palabra(texto):
+    palabras = texto.split()
     palabra = input("Ingrese la palabra que desea buscar: ")
-    posicion_inicial = input("Indique la posicion a partir de la cual buscar: ")
+    posicion_inicial = input("Indique la posición a partir de la cual buscar: ")
     posicion_inicial = validar_int(posicion_inicial)
-    index = texto.find(palabra, posicion_inicial)
+    
+    # Convertir la posición de palabra a posición de lista restandole 1
+    # para que el usuario se guie por numero posicion de palabra 
+    posicion_inicial -= 1
+
+    # Verificar si la posición inicial es válida
+    if posicion_inicial < 0 or posicion_inicial >= len(palabras):
+        print("La posición inicial especificada no es válida.")
+        return
+
+    # Buscar la palabra en la lista de palabras
+    index = -1
+    for i in range(posicion_inicial, len(palabras)):
+        if palabras[i] == palabra:
+            index = i
+            break
 
     if index != -1:
         print('')
-        print(f"La palabra {palabra} comienza en la posición: {index}")
+        print(f"La palabra '{palabra}' comienza en la posición: {index + 1}")  # Sumamos 1 para contar desde 1
     else:
         print('')
-        print(f"La palabra {palabra} no fue encontrada después de la posición {posicion_inicial}.")
+        print(f"La palabra '{palabra}' no fue encontrada después de la posición {posicion_inicial + 1}.")  # Sumamos 1 para contar desde 1
+
 
 
 
