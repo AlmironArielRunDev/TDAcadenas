@@ -1,4 +1,4 @@
-from funciones.validaciones import validar_int, validar_rango
+from funciones.validaciones import validar_int
 from funciones.split_casero import split_casero
 
 # Función buscar palabra
@@ -21,7 +21,7 @@ def buscar_palabra(texto):
     # Buscar la palabra en la lista de palabras
     index = -1
     for i in range(posicion_inicial, len(palabras)):
-        if palabras[i] == palabra:
+        if palabras[i].lower() == palabra:
             index = i
             break
 
@@ -62,20 +62,22 @@ def eliminar_palabra(texto):
     posicion_inicial = input("Indique la posición a partir de la cual buscar: ")
     posicion_inicial = validar_int(posicion_inicial)
     
+    
     # Dividir el texto en palabras
     palabras = split_casero(texto)
 
     # Validar que la posición inicial esté dentro del rango del texto
-    if not (1 <= posicion_inicial <= len(palabras)):
+    if posicion_inicial < 1 or posicion_inicial > len(palabras):
         print("La posición inicial especificada está fuera de los límites del texto.")
         return
+
 
     # Ajustar la posición inicial para que coincida con el índice de lista (restar 1)
     posicion_inicial -= 1
 
     # Recorrer las palabras y eliminar la primera aparición de la palabra especificada
     for i in range(len(palabras)):
-        if i >= posicion_inicial and palabras[i] == palabra:
+        if i >= posicion_inicial and palabras[i].lower() == palabra:
             del palabras[i]
             break
 
@@ -97,16 +99,17 @@ def reemplazar_palabra(texto):
     palabras = split_casero(texto)
 
     # Validar que la posición inicial esté dentro del rango del texto
-    if not (1 <= posicion_inicial <= len(palabras)):
+    if posicion_inicial < 1 or posicion_inicial > len(palabras):
         print("La posición inicial especificada está fuera de los límites del texto.")
         return
+
 
     # Ajustar la posición inicial para que coincida con el índice de lista (restar 1)
     posicion_inicial -= 1
 
     # Recorrer las palabras y encontrar la primera aparición de la palabra a reemplazar
     for i in range(len(palabras)):
-        if i >= posicion_inicial and palabras[i] == palabra_a_reemplazar:
+        if i >= posicion_inicial and palabras[i].lower() == palabra_a_reemplazar:
             palabras[i] = nueva_palabra
             break
 
@@ -132,15 +135,15 @@ def contar_palabras(texto):
 # ------------------------------------------------------------------------------
 def contar_oraciones(texto):
     # Lista de los signos que indican cuando termina una frase u oración
-    signos = ['.']
+    signo = '.'
     
     contar_oraciones = 0
     
     for caracter in texto:
-        if caracter in signos:
+        if caracter in signo:
             contar_oraciones += 1
     # Si el texto finaliza y no hay punto
-    if texto[-1] not in signos:
+    if texto[-1] not in signo:
         contar_oraciones += 1
         
     return print(f"la página de libro ingresada está comformada por {contar_oraciones} oraciones.")
